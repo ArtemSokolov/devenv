@@ -15,6 +15,9 @@ env:
 
 jobs:
   build:
+    strategy:
+        matrix:
+          environment: [darkroom, rstudio]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -41,12 +44,14 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: darkroom-${{ steps.date.outputs.date }}
+          tags: |
+            ${{ matrix.environment }}-latest
+            ${{ matrix.environment }}-${{ steps.date.outputs.date }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: darkroom.Dockerfile
+          file: ${{ matrix.environment }}.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
