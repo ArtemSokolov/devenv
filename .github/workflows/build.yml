@@ -7,6 +7,7 @@ on:
       - master
     paths:
       - '*.Dockerfile'
+      - .github/workflows/build.yml
 
 env:
   REGISTRY: ghcr.io
