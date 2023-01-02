@@ -29,7 +29,7 @@ ports:
 The RStudio environment is effectively a replica of the popular `rocker/tidyverse`, with tidyverse and RStudio server installed on top of the default `gitpod/workspace-base`. This provides access to all standard Gitpod tools (including `pyenv`) on top of RStudio/tidyverse, thus enabling integration between R and Python with `reticulate` and `rpy2`. RStudio server is available on port 8787. The suggested `.gitpod.yml` for this environment is
 
 ```
-image: ghcr.io/artemsokolov/rstudio:darkroom-latest
+image: ghcr.io/artemsokolov/devenv:rstudio-latest
 ports:
   - port: 8787
     onOpen: open-preview
