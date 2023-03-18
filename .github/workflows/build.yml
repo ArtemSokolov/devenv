@@ -17,7 +17,7 @@ jobs:
   build:
     strategy:
         matrix:
-          environment: [darkroom, rstudio]
+          environment: [darkroom, rstudio, nfpy]
     runs-on: ubuntu-latest
     permissions:
       contents: read

@@ -36,3 +36,11 @@ ports:
 tasks:
   - command: sudo /usr/lib/rstudio-server/bin/rstudio-server start
 ```
+
+## Nf-Py
+
+An environment containing basic Python packages for scientific programming (`numpy`, `scipy`, `pandas`), Nextflow for pipeline buildings and AWS CLI for interacting with the S3 data buckets. The suggested `.gitpod.yml` for this environment is simply
+
+```
+image: ghcr.io/artemsokolov/devenv:nfpy
+```
