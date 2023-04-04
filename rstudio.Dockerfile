@@ -10,8 +10,10 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
     apt-get install -y gdebi-core r-base
 
 # Install RStudio
-RUN wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-2022.07.2-576-amd64.deb && \
-    gdebi -n rstudio-server-2022.07.2-576-amd64.deb
+ARG RSTUDIO="rstudio-server-2023.03.0-386-amd64.deb"
+RUN wget "https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO" && \
+    gdebi -n "$RSTUDIO" && \
+    rm -rf "$RSTUDIO"
 
 # Configure Rstudio for gitpod
 RUN echo "session-default-working-dir=/workspace" | tee -a /etc/rstudio/rsession.conf && \
