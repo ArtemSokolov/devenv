@@ -22,3 +22,12 @@ RUN echo "session-default-working-dir=/workspace" | tee -a /etc/rstudio/rsession
 RUN R -e 'install.packages("tidyverse")'
 
 USER gitpod
+
+# Python packages for scientific programming
+RUN pip install --no-cache-dir \
+    numpy \
+    pandas \
+    scipy \
+    matplotlib \
+    jupyterlab \
+    awscli
