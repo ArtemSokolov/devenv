@@ -5,6 +5,7 @@ RUN pip install --no-cache-dir \
     numpy \
     pandas \
     scipy \
+    scikit_learn \
     matplotlib \
     jupyterlab \
     awscli
