@@ -46,7 +46,7 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             ${{ matrix.environment }}-latest
-            ${{ matrix.environment }}-${{ steps.date.outputs.date }}
+            ${{ matrix.environment }}-${{ env.date }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
