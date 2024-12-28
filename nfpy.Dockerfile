@@ -1,4 +1,4 @@
-FROM gitpod/workspace-python:2023-03-06-18-43-51
+FROM gitpod/workspace-python:2024-12-11-07-51-54
 
 # Python packages for scientific programming
 RUN pip install --no-cache-dir \
@@ -8,6 +8,7 @@ RUN pip install --no-cache-dir \
     scikit_learn \
     matplotlib \
     jupyterlab \
+    seaborn \
     awscli
 
 # Nextflow
