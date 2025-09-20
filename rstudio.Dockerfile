@@ -10,7 +10,7 @@ RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc |
     apt-get install -y gdebi-core r-base r-cran-tidyverse libharfbuzz-dev libfribidi-dev
 
 # Install RStudio
-ARG RSTUDIO=rstudio-server-2025.09.0-387-amd64.deb"
+ARG RSTUDIO="rstudio-server-2025.09.0-387-amd64.deb"
 RUN wget "https://download2.rstudio.org/server/jammy/amd64/$RSTUDIO" && \
     gdebi -n "$RSTUDIO" && \
     rm -rf "$RSTUDIO"
