@@ -1,4 +1,8 @@
-FROM gitpod/workspace-python:2024-12-11-07-51-54
+FROM gitpod/workspace-python:2025-08-25-18-17-39
+
+# Code CLI
+RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz && \
+    tar -xf vscode_cli.tar.gz && sudo mv code /usr/local/bin/ && rm vscode_cli.tar.gz
 
 # Python packages for scientific programming
 RUN pip install --no-cache-dir \
@@ -9,7 +13,9 @@ RUN pip install --no-cache-dir \
     matplotlib \
     jupyterlab \
     seaborn \
-    awscli
+    awscli \
+    scikit-image \
+    imagecodecs
 
 # Nextflow
 RUN sudo apt-get update && \
