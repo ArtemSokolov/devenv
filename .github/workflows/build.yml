@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - '*.Dockerfile'
+      - 'build/*.Dockerfile'
       - .github/workflows/build.yml
 
 env:
@@ -52,6 +52,6 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ${{ matrix.environment }}.Dockerfile
+          file: build/${{ matrix.environment }}.Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}

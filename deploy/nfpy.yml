@@ -1,0 +1,12 @@
+services:
+  devenv:
+    image: ghcr.io/artemsokolov/devenv:nfpy-latest
+    volumes:
+      - '/home/sokolov:/home/sokolov'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    working_dir: /home
+    command: >
+      bash -c "
+      /usr/local/bin/code tunnel user login --provider github &&
+      /usr/local/bin/code tunnel --random-name
+      "
