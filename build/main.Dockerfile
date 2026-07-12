@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 # OS libraries
 RUN apt-get update && \
-    apt-get install -y curl openjdk-17-jre gh python3 python3-pip python-is-python3 docker.io && \
+    apt-get install -y curl openjdk-17-jre gh python3 python3-pip python-is-python3 docker.io bash-completion && \
     rm -rf /var/lib/apt/lists/*
 
 # Code CLI
