@@ -6,7 +6,7 @@ on:
     branches:
       - main
     paths:
-      - 'build/*.Dockerfile'
+      - 'build/main.Dockerfile'
       - .github/workflows/build.yml
 
 env:
@@ -17,7 +17,7 @@ jobs:
   build:
     strategy:
         matrix:
-          environment: [darkroom, rstudio, nfpy]
+          environment: [main]
     runs-on: ubuntu-latest
     permissions:
       contents: read
