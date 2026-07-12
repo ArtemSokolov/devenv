@@ -11,8 +11,4 @@ services:
       - '/mnt:/mnt'
       - '/var/run/docker.sock:/var/run/docker.sock'
     working_dir: /home/${DEVENV_USER}
-    command: >
-      bash -c "
-      /usr/local/bin/code tunnel user login --provider github &&
-      /usr/local/bin/code tunnel --name devenv
-      "
+    command: bash -c "id -u && id -g && docker ps -a"
