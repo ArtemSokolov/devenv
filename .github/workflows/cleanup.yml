@@ -14,10 +14,7 @@ jobs:
   prune:
     runs-on: ubuntu-latest
     steps:
-      # Requires a repo secret GHCR_CLEANUP_PAT: a PAT with the
-      # read:packages and delete:packages scopes. GITHUB_TOKEN can't be
-      # used here since we rely on the `!` negation filter on image-tags.
-      - name: Delete dated images older than 3 months
+      - name: Delete non-latest images older than 3 months
         uses: snok/container-retention-policy@v3.1.0
         with:
           account: user
