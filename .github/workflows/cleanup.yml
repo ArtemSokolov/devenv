@@ -1,0 +1,29 @@
+name: cleanup
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry Run'
+        type: boolean
+        default: false
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      # Requires a repo secret GHCR_CLEANUP_PAT: a PAT with the
+      # read:packages and delete:packages scopes. GITHUB_TOKEN can't be
+      # used here since we rely on the `!` negation filter on image-tags.
+      - name: Delete dated images older than 3 months
+        uses: snok/container-retention-policy@v3.1.0
+        with:
+          account: user
+          token: ${{ secrets.GHCR_CLEANUP_PAT }}
+          image-names: devenv
+          image-tags: '!*-latest'
+          tag-selection: tagged
+          cut-off: 90d
+          dry-run: ${{ inputs.dry_run || false }}
