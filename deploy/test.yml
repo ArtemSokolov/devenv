@@ -6,9 +6,10 @@ services:
       - "${DEVENV_DOCKER_GID:-1001}"
     environment:
       - HOME=/home/${DEVENV_USER}
+      - GH_TOKEN
     volumes:
       - '${HOME}:/home/${DEVENV_USER}'
       - '/mnt:/mnt'
       - '/var/run/docker.sock:/var/run/docker.sock'
     working_dir: /home/${DEVENV_USER}
-    command: bash -c "id -u && id -g && docker ps -a"
+    command: bash -c "id -u && id -g && docker ps -a && gh auth status"
