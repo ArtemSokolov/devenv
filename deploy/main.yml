@@ -1,6 +1,7 @@
 services:
   devenv:
     image: ghcr.io/artemsokolov/devenv:main-latest
+    pull_policy: always
     user: "${DEVENV_UID:-1000}:${DEVENV_GID:-1000}"
     group_add:
       - "${DEVENV_DOCKER_GID:-1001}"
