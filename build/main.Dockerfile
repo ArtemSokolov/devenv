@@ -6,6 +6,11 @@ RUN apt-get update && \
         r-base r-base-dev r-cran-roxygen2 r-cran-knitr r-cran-rmarkdown qpdf pandoc tidy && \
     rm -rf /var/lib/apt/lists/*
 
+# Pin R's locale to C.UTF-8 (the only UTF-8 locale generated in this image);
+# scoped to R via /etc/R/Renviron rather than image-wide env vars
+RUN echo 'LANG=C.UTF-8' >> /etc/R/Renviron && \
+    echo 'LC_ALL=C.UTF-8' >> /etc/R/Renviron
+
 # Code CLI
 RUN curl -Lk 'https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64' --output vscode_cli.tar.gz && \
     tar -xf vscode_cli.tar.gz && mv code /usr/local/bin/ && rm vscode_cli.tar.gz
