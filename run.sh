@@ -5,6 +5,20 @@ set -euo pipefail
 # into Windows paths before they reach docker.exe. No-op outside MSYS.
 export MSYS_NO_PATHCONV=1
 
+# Optional image override: ./run.sh --image <ref> [compose args...]
+# Falls back to the default in the compose file when not provided.
+if [[ "${1:-}" == --image=* ]]; then
+  export DEVENV_IMAGE="${1#--image=}"
+  shift
+elif [[ "${1:-}" == "--image" ]]; then
+  if [[ -z "${2:-}" ]]; then
+    echo "error: --image requires a value" >&2
+    exit 1
+  fi
+  export DEVENV_IMAGE="$2"
+  shift 2
+fi
+
 # User attributes
 export DEVENV_UID="$(id -u)"
 export DEVENV_GID="$(id -g)"
